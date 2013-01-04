@@ -7,22 +7,22 @@
 
 (function($){
 
-     $.i18n = function(string, locale){
-	 var lang = locale || $.i18n.lang;
-	 if (!this.i18n[lang] || !this.i18n[lang].strings){
+     $.loQale = function(string, locale){
+	 var lang = locale || $.loQale.lang;
+	 if (!this.loQale[lang] || !this.loQale[lang].strings){
 	     return string;
 	 }
-	 return this.i18n[lang].strings[string]||string;
+	 return this.loQale[lang].strings[string]||string;
      };
 
-     $._ = $.i18n;
+     $._ = $.loQale;
 
-     $.i18n.setLocale = function (locale){
-	 $.i18n.lang = locale;
+     $.loQale.setLocale = function (locale){
+	 $.loQale.lang = locale;
      };
 
-     $.i18n.getLocale = function (){
-	 return $.i18n.lang;
+     $.loQale.getLocale = function (){
+	 return $.loQale.lang;
      };
 
 
@@ -33,18 +33,18 @@
       * @param {locale} locale that number should be converted to
       * @returns {String} Unicode string for localized numeral 
       */
-     $.i18n._n = function(num, locale){
+     $.loQale._n = function(num, locale){
 
-	 locale = locale || $.i18n.lang;
+	 locale = locale || $.loQale.lang;
 
-	 if (!this.i18n[locale] || !this.i18n[locale].numBase ){
+	 if (!this.loQale[locale] || !this.loQale[locale].numBase ){
 	     return num;
 	 }
 
 
 	 //48 is the base for western numerals
-	 var numBase = $.i18n[$.i18n.lang].numeralBase || 48;
-	 var prefix =  $.i18n[$.i18n.lang].numeralPrefix || "u00";
+	 var numBase = $.loQale[$.loQale.lang].numeralBase || 48;
+	 var prefix =  $.loQale[$.loQale.lang].numeralPrefix || "u00";
      
 	 var convertDigit = function(digit){	     
 	     return '\\' + prefix + 
@@ -55,7 +55,7 @@
 	 return eval('"' + charArray.join('') + '"');
      };
 
-     $._n = $.i18n._n;
+     $._n = $.loQale._n;
 
      /* ToDo
       * implement sprintf
