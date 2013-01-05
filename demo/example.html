@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title> Example of jquery i18n </title>
+  <head>
+    <title> Example of loQale </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+	<div class="navbar">
+	  <div class="navbar-inner">
+		<a class="brand" href="#">loQale</a>
+		<ul class="nav">
+		  <li class="active"><a href="#" data-string="home"></a></li>
+		  <li><a href="#" data-string="about"></a></li>
+		  <li><a href="#" data-string="features"></a></li>
+		  <li><a href="#" data-string="getintouch"></a></li>
+		</ul>
+		 <div class="btn-group pull-right">
+		  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			<span data-string="language"></span>
+			<span class="caret"></span>
+		  </a>
+			<ul class="dropdown-menu" id="lang-dropdown">
+                  <li><a href="#en" data-lang="en">English</a></li>
+                  <li><a href="#fr" data-lang="fr">Fran&ccedil;ais</a></li>
+			</ul>
+		</div>
+	  </div>
+	</div>
+    <h1><p class="well" data-string="welcome"></p></h1>
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='../loqale-0.0.1.js'></script>
+	<script type='text/javascript' src='strings.en.json'></script>
+	<script type='text/javascript' src='strings.fr.json'></script>
+		
+	<script type='text/javascript'>
+	$(document).ready(function(){
+	  
+	  $.loQale.translate('en');
+	  
+	  $("#lang-dropdown").find("a").click(function(event){
+		event.preventDefault();
+		
+		var locale=$(this).attr("data-lang");
+		$.loQale.translate(locale);
+		
+		
+	  });
 
-<script type='text/javascript' src='./jquery-1.3.2.min.js'></script>
-<script type='text/javascript' src='./jquery.i18n.js'></script>
-<script type='text/javascript' src='./jquery.ne.json'></script>
-<script type='text/javascript' src='example.ne.json'></script>
+	});
 
-<script type='text/javascript'>
-$(document).ready(function(){
-  $._.setLocale('ne');
-
-  $('#example1').append("<div>" + $._('Welcome')+"</div>");
-  $('#example1').append("<div>" + $._n(90) + "</div>");
-
-});
-
-</script>
-
-</head>
-<body>
-  <div id='example1'>Example using strings application-wide <br />
-  <code>
-    $('#example1').append("&lt;div&gt;" + $._('Hello')+"&lt;/div&gt;"); <br />
-    $('#example1').append("&lt;div&gt;" + $._n(90) + "&lt;/div&gt;"); <br />
-  </code>
-  </div>
-
-</body>
+	</script>
+  </body>
 </html>

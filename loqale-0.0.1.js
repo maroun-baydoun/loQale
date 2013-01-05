@@ -8,22 +8,55 @@
 (function($){
 
      $.loQale = function(string, locale){
-	 var lang = locale || $.loQale.lang;
-	 if (!this.loQale[lang] || !this.loQale[lang].strings){
-	     return string;
-	 }
-	 return this.loQale[lang].strings[string]||string;
+		 var lang = locale || $.loQale.lang;
+		 if (!this.loQale[lang] || !this.loQale[lang].strings){
+			 return string;
+		 }
+		 return this.loQale[lang].strings[string]||string;
      };
 
      $._ = $.loQale;
 
      $.loQale.setLocale = function (locale){
-	 $.loQale.lang = locale;
+		$.loQale.lang = locale;
      };
 
      $.loQale.getLocale = function (){
-	 return $.loQale.lang;
+		return $.loQale.lang;
      };
+	 
+	 $.loQale.translate=function(locale){
+	
+		if(locale!= $.loQale.getLocale()){
+
+			
+			$.loQale.setLocale(locale);
+				
+			var elementsToTranslate=$('[data-string]');
+			
+			
+			for(var i=0,length=elementsToTranslate.length;i<length;i++){
+				
+				var elementToTranslate=$(elementsToTranslate[i]);
+				
+				var elementToTranslateString=elementToTranslate.attr('data-string');
+				
+				
+				var elementTag=elementToTranslate.prop('tagName').toLowerCase();
+				
+				
+				if(elementTag=='input'){
+					elementToTranslate.attr('value',$._(elementToTranslateString));
+				}
+				
+				else {
+					elementToTranslate.html($._(elementToTranslateString));
+				}
+				
+			}
+				
+		}
+	}
 
 
      /**

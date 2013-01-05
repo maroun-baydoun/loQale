@@ -1,0 +1,9 @@
+jQuery.loQale.en={};
+jQuery.loQale.en.strings = {
+	"home":"Home",
+	"about":"About",
+	"features":"Features",
+	"getintouch":"Get in touch",
+	"language":"Language",
+    "welcome":"Welcome"
+};

@@ -1,0 +1,9 @@
+jQuery.loQale.fr={};
+jQuery.loQale.fr.strings = {
+	"home":"Acceuil",
+	"about":"A propos",
+	"features":"Fonctionnalit&eacute;s",
+	"getintouch":"Nous contacter",
+	"language":"Langue",
+    "welcome":"Bienvenue"
+};
