@@ -34,7 +34,7 @@ For the English locale, create *strings.en.json*:
 
     loQale.en={
       strings : {
-  	"firstname":"First Name",
+  		"firstname":"First Name",
 		"lastname":"Last Name",
 		"register":"Register",
 		"submit":"Submit"
