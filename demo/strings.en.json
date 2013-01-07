@@ -1,9 +1,19 @@
-jQuery.loQale.en={};
-jQuery.loQale.en.strings = {
-	"home":"Home",
-	"about":"About",
-	"features":"Features",
-	"getintouch":"Get in touch",
-	"language":"Language",
-    "welcome":"Welcome"
+loQale.en={
+	strings : {
+		"home":"Home",
+		"about":"About",
+		"features":"Features",
+		"getintouch":"Get in touch",
+		"language":"Language",
+		"welcome":"Welcome",
+		"firstname":"First Name",
+		"lastname":"Last Name",
+		"register":"Register",
+		"submit":"Submit",
+		"why":"Why",
+		"how":"How",
+		"when":"When",
+		"info":"Open source is a philosophy, or pragmatic methodology that promotes free redistribution and access to an end product's design and implementation details. Before the phrase open source became widely adopted, developers and producers used a variety of terms for the concept; open source gained hold with the rise of the Internet, and the attendant need for massive retooling of the computing source code. Opening the source code enabled a self-enhancing diversity of production models, communication paths, and interactive communities. The open-source software movement arose to clarify the environment that the new copyright, licensing, domain, and consumer issues created."
+	}
 };
+
