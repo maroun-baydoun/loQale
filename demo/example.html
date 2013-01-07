@@ -26,25 +26,60 @@
 		</div>
 	  </div>
 	</div>
-    <h1><p class="well" data-string="welcome"></p></h1>
+	<div class="container">
+		<h1><p class="well" data-string="welcome"></p></h1>
+		<div class="row">
+			<div class="span8">
+				<ul class="nav nav-tabs">
+				  <li class="active">
+					<a href="#" data-string="why"></a>
+				  </li>
+				  <li><a href="#" data-string="how">How</a></li>
+				  <li><a href="#" data-string="when">When</a></li>
+				</ul>
+			<p class="well well-small" data-string="info"></p>
+			</div>
+			<div class="span4">
+				<form>
+				  <fieldset>
+					<legend data-string="register"></legend>
+					<label data-string="firstname"></label>
+					<input type="text">
+					<label data-string="lastname"></label>
+					<input type="text"/>
+					<div class="controls">
+						<button type="submit" class="btn" data-string="submit"></button>
+					</div>
+				  </fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type='text/javascript' src='../loqale-0.0.1.js'></script>
+	<script type='text/javascript' src='../loqale.1.0.js'></script>
 	<script type='text/javascript' src='strings.en.json'></script>
 	<script type='text/javascript' src='strings.fr.json'></script>
 		
 	<script type='text/javascript'>
 	$(document).ready(function(){
 	  
-	  $.loQale.translate('en');
+	 loQale.init({
+		locale:'fr',
+		triggerOnInit:true,
+		triggerOnLocaleChange:true,
+		onBeforeTranslate:function(){console.log("Starting translation");},
+		onAfterTranslate:function(){console.log("Finished translation");},
+		onBeforeElementTranslate:function(element,elementStringName,elementStringValue){console.log("Translating "+elementStringName);},
+		onAfterElementTranslate:function(element,elementStringName,elementStringValue){console.log("Finished translating "+elementStringName);}
+	});
+	 
 	  
 	  $("#lang-dropdown").find("a").click(function(event){
 		event.preventDefault();
 		
 		var locale=$(this).attr("data-lang");
-		$.loQale.translate(locale);
-		
-		
+		loQale.setLocale(locale);
 	  });
 
 	});
