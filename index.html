@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>loQale by maroun-baydoun</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>loQale</h1>
+        <p>A simple JavaScript library to internationalize your web applications.</p>
+
+        <p class="view"><a href="https://github.com/maroun-baydoun/loQale">View the Project on GitHub <small>maroun-baydoun/loQale</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/maroun-baydoun/loQale/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/maroun-baydoun/loQale/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/maroun-baydoun/loQale">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>loQale</h1>
+
+<p>loQale, a simple JavaScript library to internationalize your web applications.</p>
+
+<h2>Introduction</h2>
+
+<p>loQale automatically maps the localized strings to their corresponding  HTML elements, so that your web application can be translated on the fly. </p>
+
+<h2>Usage</h2>
+
+<h5>Prerequisites</h5>
+
+<p>To start using loQale you need:</p>
+
+<ol>
+<li> The latest version of loQale available <a href="https://github.com/maroun-baydoun/loQale/archive/master.zip">here</a>.</li>
+<li> jQuery 1.7+.</li>
+<li>
+<p>One or more JSON files containing your localized strings.</p>
+
+<pre><code>&lt;script src="http://code.jquery.com/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="loqale.js"&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='strings.en.json'&gt;&lt;/script&gt;
+&lt;script type='text/javascript' src='strings.fr.json'&gt;&lt;/script&gt;
+</code></pre>
+</li>
+</ol><h5>Localized strings files</h5>
+
+<p>A JSON file is needed every locale you want the application to support. Each JSON file contains the mapping between your string names and their values in the corresponding locale. </p>
+
+<p>For the English locale, create <em>strings.en.json</em>:</p>
+
+<pre><code>loQale.en={
+  strings : {
+    "firstname":"First Name",
+    "lastname":"Last Name",
+    "register":"Register",
+    "submit":"Submit"
+  }
+};
+</code></pre>
+
+<p>For the French locale, create <em>strings.fr.json</em>:</p>
+
+<pre><code>loQale.fr={
+  strings : {
+    "firstname":"Pr&amp;eacute;nom",
+    "lastname":"Nom",
+    "register":"Inscrivez-vous",
+    "submit":"Envoyer",
+ }
+};
+</code></pre>
+
+<h5>HTML</h5>
+
+<p>Add the <code>data-string</code> attribute to the HTML elements that need to be localized. The value of <code>data-string</code> is the string name corresponding to this element.</p>
+
+<pre><code>&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend data-string="register"&gt;&lt;/legend&gt;
+    &lt;label data-string="firstname"&gt;&lt;/label&gt;
+    &lt;input type="text"/&gt;
+    &lt;label data-string="lastname"&gt;&lt;/label&gt;
+    &lt;input type="text"/&gt;                
+    &lt;input type="submit" data-string="submit"/&gt;         
+ &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h5>Initializing loQale</h5>
+
+<p>Inside jQuery's <code>$(document).ready()</code>, call <code>loQale.init()</code> to initialize the library.</p>
+
+<pre><code>$(document).ready(function(){
+   loQale.init();
+}
+</code></pre>
+
+<h5>Applying localization</h5>
+
+<p>To apply the localization call <code>loQale.setLocale(localname)</code> to change the current locale and then  <code>loQale.translate()</code> to translate the application.</p>
+
+<pre><code>loQale.setLocale('en'); // sets the locale to English
+loQale.translate(); // translates the application into English
+
+loQale.setLocale('fr'); // sets the locale to French
+loQale.translate(); // translates the application into French
+</code></pre>
+
+<h2>Attribution</h2>
+
+<p>loQale is based on the <a href="https://github.com/bryanwb/jquery-i18n">jquery-i18n</a> plugin by <a href="https://github.com/bryanwb">Bryan Berry</a></p>
+
+<h2>License</h2>
+
+<p>loQale is licensed under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a> terms.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/maroun-baydoun">maroun-baydoun</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
