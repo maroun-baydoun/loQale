@@ -57,7 +57,7 @@
 	</div>
 	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type='text/javascript' src='../loqale.1.0.js'></script>
+	<script type='text/javascript' src='../loqale.js'></script>
 	<script type='text/javascript' src='strings.en.json'></script>
 	<script type='text/javascript' src='strings.fr.json'></script>
 		
@@ -73,6 +73,7 @@
 		onBeforeElementTranslate:function(element,elementStringName,elementStringValue){console.log("Translating "+elementStringName);},
 		onAfterElementTranslate:function(element,elementStringName,elementStringValue){console.log("Finished translating "+elementStringName);}
 	});
+	 
 	 
 	  
 	  $("#lang-dropdown").find("a").click(function(event){
