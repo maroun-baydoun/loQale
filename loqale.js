@@ -14,11 +14,8 @@
     
     var loQale = (function () {
 
-		//the current options of loQale i.e the merging on the defaults and the user-specified options
-        var options;
-		
-		//the default options
-        var defaults = {
+		//the current options of loQale, initialized with the default values
+        var  options = {
             locale: 'en', //the default locale
             triggerOnInit: false, //if true, a translation will occur after initialization of the library
             triggerOnLocaleChange: false, //if true, a translation will occur every time the locale is changed via loQale.setLocale
@@ -31,11 +28,12 @@
 		**@param {userOptions}
 		**/
         function init(userOptions) {
-            options = $.extend({}, defaults, userOptions);
+            options = $.extend({}, options, userOptions);
 
             if (options.triggerOnInit) {
                 translate();
             }
+            console.log(options);
         }
 
 		/**
@@ -47,7 +45,7 @@
                 return string;
             }
             return loQale[locale].strings[string] || string;
-        };
+        }
 
 
         function setLocale(locale) {
@@ -61,11 +59,11 @@
             if (options.triggerOnLocaleChange) {
                 translate();
             }
-        };
+        }
 
         function getLocale() {
             return options.locale;
-        };
+        }
 
         function translate(context) {
 
@@ -78,7 +76,7 @@
                 context = options.context;
             }
 
-            var elementsToTranslate= context.find('[' + options.stringAttribute + ']');
+            var elementsToTranslate = context.find('[' + options.stringAttribute + ']');
 
             for (var i = 0, length = elementsToTranslate.length; i < length; i++) {
 
