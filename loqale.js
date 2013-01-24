@@ -1,21 +1,23 @@
-/* Copyright (c) Maroun Baydoun, 2013,
-*   Under the terms of the MIT license.
-*   Based on the  jquery-i18n plugin (http://github.com/bryanwb/jquery-i18n) by Bryan Berry.
-*
-*	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-*	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+/** @file loQale.js
+ *   @version 1.0.0
+ *   @author Maroun Baydoun <maroun.baydoun@gmail.com>
+ *   @license See LICENSE.md file included in this distribution.
+ */
 
 (function ($) {
 
 
     "use strict";
-    
+
+
     var loQale = (function () {
 
-		//the current options of loQale, initialized with the default values
-        var  options = {
+
+        /**
+         *The current options of loQale, initialized with the default values.
+         *@type Object
+         */
+        var options = {
             locale: 'en', //the default locale
             triggerOnInit: false, //if true, a translation will occur after initialization of the library
             triggerOnLocaleChange: false, //if true, a translation will occur every time the locale is changed via loQale.setLocale
@@ -23,31 +25,39 @@
             stringAttribute: 'data-string' // the data attribute used to identify the string corresponding to a DOM element
         };
 
-		/**
-		**Initializes loQale. If triggerOnInit is set to true, a translation will occur.
-		**@param {userOptions}
-		**/
+        /**
+         *Initializes loQale. If triggerOnInit is set to true, a translation will occur.
+         *@function
+         *@param {Object} userOptions The options specified by the user 
+         */
         function init(userOptions) {
             options = $.extend({}, options, userOptions);
 
             if (options.triggerOnInit) {
                 translate();
             }
-            console.log(options);
         }
 
-		/**
-		**Returns a localized string for the current locale, or the specified locale if specified
-		**/
+        /**
+         *Returns a localized string.
+         *@function
+         *@param {String} string The string to translate
+         *@param {String} [locale] Overrides the current locale
+         *@retuns {String} The localized string, or the string itself if it was not found in the locale
+         */
         function getLocalizedString(string, locale) {
-            var locale = locale || options.locale;
-            if (!loQale[locale] || !loQale[locale].strings) {
+            var usedLocale = locale || options.locale;
+            if (!loQale[usedLocale] || !loQale[usedLocale].strings) {
                 return string;
             }
-            return loQale[locale].strings[string] || string;
+            return loQale[usedLocale].strings[string] || string;
         }
 
-
+        /**
+         *Sets the current locale. If triggerOnLocaleChange is set to true, a translation will occur.
+         *@function
+         *@param {String} locale The new locale
+         */
         function setLocale(locale) {
 
             if (options.locale === locale) {
@@ -61,17 +71,28 @@
             }
         }
 
+        /**
+         *Return the current locale.
+         *@function
+         *@retuns {String} The current locale
+         */
         function getLocale() {
             return options.locale;
         }
 
+
+        /**
+         *Translates DOM elements.
+         *@function
+         *@param {Object} [context] Overrides the current DOM context
+         */
         function translate(context) {
 
             if (options.onBeforeTranslate) {
                 options.onBeforeTranslate();
             }
 
-            
+
             if (!context) {
                 context = options.context;
             }
@@ -135,4 +156,5 @@
     })();
 
     window.loQale = loQale;
+
 })(jQuery);
