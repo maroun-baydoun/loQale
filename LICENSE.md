@@ -1,7 +1,7 @@
 License
 =====
 
-loQale is a free software, licensed under the [MIT license][]. See the file LICENSE.md in this distribution for more details.
+loQale is a free software, licensed under the [MIT license][].
 
    [MIT license]: http://opensource.org/licenses/mit-license.php
    
@@ -15,7 +15,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-The source code for loQale is available at: [loQale source]
+The source code for loQale is available at: [http://github.com/maroun-baydoun/loQale]
 
 [loQale source]: http://github.com/maroun-baydoun/loQale
 
