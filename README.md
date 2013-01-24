@@ -108,8 +108,8 @@ loQale is based on the [jquery-i18n][] plugin by [Bryan Berry][]
 License
 -------
 
-loQale is licensed under the [MIT license][] terms.
+loQale is a free software, licensed under the [MIT license][]. See the file LICENSE.md in this distribution for more details.
 
-  [MIT license]: http://opensource.org/licenses/mit-license.php
+   [MIT license]: http://opensource.org/licenses/mit-license.php
 
 
