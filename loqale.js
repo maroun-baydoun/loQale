@@ -21,7 +21,7 @@
             locale: 'en', //the default locale
             triggerOnInit: false, //if true, a translation will occur after initialization of the library
             triggerOnLocaleChange: false, //if true, a translation will occur every time the locale is changed via loQale.setLocale
-            context: $('body'), //the default context under which elements will be translated
+            context: $('html'), //the default context under which elements will be translated
             stringAttribute: 'data-string' // the data attribute used to identify the string corresponding to a DOM element
         };
 

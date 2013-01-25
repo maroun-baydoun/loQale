@@ -1,5 +1,6 @@
 loQale.fr={
 	strings : {
+        "title":"D&eacute;mo de loQale",
 		"home":"Acceuil",
 		"about":"A propos",
 		"features":"Fonctionnalit&eacute;s",
@@ -13,7 +14,7 @@ loQale.fr={
 		"why":"Pourquoi",
 		"how":"Comment",
 		"when":"Quand",
-		"info":"La d&eacute;signation open source s&#39;applique aux logiciels dont la licence respecte des crit&egrave;res pr&eacute;cis&eacute;ment &eacute;tablis par l&#39;Open Source Initiative, c&#39;est-&agrave;-dire la possibilit&eacute; de libre redistribution, d&#39;acc&egrave;s au code source et aux travaux d&eacute;riv&eacute;s. Souvent, un logiciel libre est qualifi&eacute; d&#39;« open source », car les licences compatibles open source englobent les licences libres selon la d&eacute;finition de la Free Software Foundation ou FSF. Le terme open source est en concurrence avec le terme « free software » recommand&eacute; par la FSF. Le terme « freeware » (gratuiciel) d&eacute;signe des logiciels gratuits qui ne sont ni ouverts, ni libres."
+		"info":"La d&eacute;signation open source s&#39;applique aux logiciels dont la licence respecte des crit&egrave;res pr&eacute;cis&eacute;ment &eacute;tablis par l&#39;Open Source Initiative, c&#39;est-&agrave;-dire la possibilit&eacute; de libre redistribution, d&#39;acc&egrave;s au code source et aux travaux d&eacute;riv&eacute;s. Souvent, un logiciel libre est qualifi&eacute; d&#39;ï¿½ open source ï¿½, car les licences compatibles open source englobent les licences libres selon la d&eacute;finition de la Free Software Foundation ou FSF. Le terme open source est en concurrence avec le terme ï¿½ free software ï¿½ recommand&eacute; par la FSF. Le terme ï¿½ freeware ï¿½ (gratuiciel) d&eacute;signe des logiciels gratuits qui ne sont ni ouverts, ni libres."
 	}
 };
 

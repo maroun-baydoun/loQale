@@ -1,5 +1,6 @@
 loQale.en={
 	strings : {
+        "title":"loQale Demo",
 		"home":"Home",
 		"about":"About",
 		"features":"Features",
