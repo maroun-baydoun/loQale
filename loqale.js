@@ -23,7 +23,7 @@
             triggerOnLocaleChange: false, //if true, a translation will occur every time the locale is changed via loQale.setLocale
             context: $('html'), //the default context under which elements will be translated
             stringAttribute: 'data-string' // the data attribute used to identify the string corresponding to a DOM element
-        }; 
+        };
         
         /**
          *The DOM elements that will be translated.
@@ -100,11 +100,45 @@
             elementsToTranslate = options.context.find('[' + options.stringAttribute + ']');
         }
         
+        /**
+         *Translates a DOM element.
+         *@function
+         *@param {Object} [element] The DOM element to translate
+         */
+        function translateElement(element) {
+            
+            var elementStringName = element.attr(options.stringAttribute),
+                elementStringValue = getLocalizedString(elementStringName),
+                elementTag = element.prop('tagName').toLowerCase();
+            
+            if (options.onBeforeElementTranslate) {
+
+                var returnValue = options.onBeforeElementTranslate(element, elementStringName, elementStringValue);
+                
+                if (typeof returnValue !== 'undefined') {
+                    if (returnValue === false) {
+                        return;
+                    } else if (returnValue !== true) {
+                        elementStringValue = returnValue;
+                    }
+                }
+            }
+            
+            if (elementTag === 'input') {
+                element.attr('value', elementStringValue);
+            } else {
+                element.html(elementStringValue);
+            }
+
+            if (options.onAfterElementTranslate) {
+                options.onAfterElementTranslate(element, elementStringName, elementStringValue);
+            }
+        }
         
         /**
          *Translates DOM elements.
          *@function
-         *@param {Object} [context] Overrides the current DOM context
+         *@param {Object} [elements] The DOM elements to translate instead of the elements selected by default from the context
          */
         function translate(elements) {
 
@@ -118,32 +152,8 @@
             for (var i = 0, length = elements.length; i < length; i++) {
 
                 var element = $(elements[i]);
-                var elementStringName = element.attr(options.stringAttribute);
-                var elementStringValue = getLocalizedString(elementStringName);
-                var elementTag = element.prop('tagName').toLowerCase();
-
-                if (options.onBeforeElementTranslate) {
-
-                    var returnValue = options.onBeforeElementTranslate(element, elementStringName, elementStringValue);
-                    if (typeof returnValue !== 'undefined') {
-                        if (returnValue === false) {
-                            continue;
-                        } else if (returnValue !== true) {
-                            elementStringValue = returnValue;
-                        }
-                    }
-                }
-
-                if (elementTag === 'input') {
-                    element.attr('value', elementStringValue);
-                } else {
-                    element.html(elementStringValue);
-                }
-
-                if (options.onAfterElementTranslate) {
-                    options.onAfterElementTranslate(element, elementStringName, elementStringValue);
-                }
-
+                
+                translateElement(element);
             }
 
             if (options.onAfterTranslate) {
