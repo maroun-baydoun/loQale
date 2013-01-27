@@ -129,7 +129,7 @@
             } else {
                 element.html(elementStringValue);
             }
-
+            
             if (options.onAfterElementTranslate) {
                 options.onAfterElementTranslate(element, elementStringName, elementStringValue);
             }
@@ -159,6 +159,8 @@
             if (options.onAfterTranslate) {
                 options.onAfterTranslate(elements);
             }
+            
+            $('html').attr('lang',options.locale);
         }
 
 
@@ -178,7 +180,6 @@
             translate:function(elements){
                 translate(elements);
             }
-
         };
 
 
