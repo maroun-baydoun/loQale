@@ -23,8 +23,15 @@
             triggerOnLocaleChange: false, //if true, a translation will occur every time the locale is changed via loQale.setLocale
             context: $('html'), //the default context under which elements will be translated
             stringAttribute: 'data-string' // the data attribute used to identify the string corresponding to a DOM element
-        };
-
+        }; 
+        
+        /**
+         *The DOM elements that will be translated.
+         *@type Object
+         */
+        var elementsToTranslate;
+        
+        
         /**
          *Initializes loQale. If triggerOnInit is set to true, a translation will occur.
          *@function
@@ -32,6 +39,9 @@
          */
         function init(userOptions) {
             options = $.extend({}, options, userOptions);
+            
+            findElementsToTranslate();
+
 
             if (options.triggerOnInit) {
                 translate();
@@ -80,28 +90,34 @@
             return options.locale;
         }
 
-
+        
+       /**
+         *Finds the DOM elements that need to be translated.
+         *@function
+         */
+        function findElementsToTranslate() {
+            
+            elementsToTranslate = options.context.find('[' + options.stringAttribute + ']');
+        }
+        
+        
         /**
          *Translates DOM elements.
          *@function
          *@param {Object} [context] Overrides the current DOM context
          */
-        function translate(context) {
+        function translate(elements) {
 
             if (options.onBeforeTranslate) {
                 options.onBeforeTranslate();
             }
 
 
-            if (!context) {
-                context = options.context;
-            }
+            elements = elements || elementsToTranslate;
+           
+            for (var i = 0, length = elements.length; i < length; i++) {
 
-            var elementsToTranslate = context.find('[' + options.stringAttribute + ']');
-
-            for (var i = 0, length = elementsToTranslate.length; i < length; i++) {
-
-                var element = $(elementsToTranslate[i]);
+                var element = $(elements[i]);
                 var elementStringName = element.attr(options.stringAttribute);
                 var elementStringValue = getLocalizedString(elementStringName);
                 var elementTag = element.prop('tagName').toLowerCase();
@@ -148,6 +164,9 @@
             },
             getLocalizedString: function (string, locale) {
                 return getLocalizedString(string, locale);
+            },
+            translate:function(elements){
+                translate(elements);
             }
 
         };
