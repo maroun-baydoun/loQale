@@ -142,12 +142,12 @@
          */
         function translate(elements) {
 
+            elements = elements || elementsToTranslate;
+            
             if (options.onBeforeTranslate) {
-                options.onBeforeTranslate();
+                options.onBeforeTranslate(elements);
             }
 
-
-            elements = elements || elementsToTranslate;
            
             for (var i = 0, length = elements.length; i < length; i++) {
 
@@ -157,7 +157,7 @@
             }
 
             if (options.onAfterTranslate) {
-                options.onAfterTranslate();
+                options.onAfterTranslate(elements);
             }
         }
 

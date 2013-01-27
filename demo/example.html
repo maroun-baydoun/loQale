@@ -68,8 +68,8 @@
 		locale:'fr',
 		triggerOnInit:true,
 		triggerOnLocaleChange:true,
-		onBeforeTranslate:function(){console.log("Starting translation");},
-		onAfterTranslate:function(){console.log("Finished translation");},
+		onBeforeTranslate:function(elements){console.log("Starting translation");},
+		onAfterTranslate:function(elements){console.log("Finished translation");},
 		onBeforeElementTranslate:function(element,elementStringName,elementStringValue){console.log("Translating "+elementStringName);},
 		onAfterElementTranslate:function(element,elementStringName,elementStringValue){console.log("Finished translating "+elementStringName);}
 	});
