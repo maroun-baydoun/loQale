@@ -3,6 +3,8 @@ loQale
 
 loQale, a simple JavaScript library to internationalize your web applications.
 
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=marounbaydoun&url=https://github.com/maroun-baydoun/loQale&title=loQale&language=&tags=github&category=software) 
+
 Introduction
 ------------
 
