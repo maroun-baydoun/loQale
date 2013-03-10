@@ -97,7 +97,7 @@
          */
         function findElementsToTranslate() {
             
-            elementsToTranslate = options.context.find('[' + options.stringAttribute + ']');
+            elementsToTranslate = options.context.find('[' + options.stringAttribute + '],[data-string]');
         }
         
         /**
@@ -107,33 +107,64 @@
          */
         function translateElement(element) {
             
-            var elementStringName = element.attr(options.stringAttribute),
-                elementStringValue = getLocalizedString(elementStringName),
+            var elementString = element.attr(options.stringAttribute);
+            
+            //If the element string is likely an object
+            if (elementString.indexOf('{') === 0) {
+                
+                elementString = $.parseJSON(elementString);
+                
+                for (var attribute in elementString){
+
+                    translateElementAttribute(element,attribute,elementString[attribute]);
+                    
+                }
+            }
+            
+            else{
+                
+                translateElementAttribute(element,'text',elementString);
+            }
+                
+        }
+        
+        function translateElementAttribute(element,attribute,attributeStringName){
+            
+            var attributeStringValue = getLocalizedString(attributeStringName),
                 elementTag = element.prop('tagName').toLowerCase();
             
+              
             if (options.onBeforeElementTranslate) {
 
-                var returnValue = options.onBeforeElementTranslate(element, elementStringName, elementStringValue);
+                var returnValue = options.onBeforeElementTranslate(element,attribute, attributeStringName, attributeStringValue);
                 
                 if (typeof returnValue !== 'undefined') {
                     if (returnValue === false) {
                         return;
                     } else if (returnValue !== true) {
-                        elementStringValue = returnValue;
+                        attributeStringValue = returnValue;
                     }
                 }
             }
             
-            if (elementTag === 'input') {
-                element.attr('value', elementStringValue);
-            } else {
-                element.html(elementStringValue);
+            if(attribute==='text'){
+                if (elementTag === 'input') {
+                    element.attr('value', attributeStringValue);
+                } else {
+                    element.html(attributeStringValue);
+                }
+            }
+            
+            else{
+                element.attr(attribute,attributeStringValue);   
+                
             }
             
             if (options.onAfterElementTranslate) {
-                options.onAfterElementTranslate(element, elementStringName, elementStringValue);
+                options.onAfterElementTranslate(element,attribute, attributeStringName, attributeStringValue);
             }
         }
+        
         
         /**
          *Translates DOM elements.

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title data-string="title"></title>
+    <meta charset="utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
   </head>
   <body>
@@ -27,7 +28,7 @@
 	  </div>
 	</div>
 	<div class="container">
-		<h1><p class="well" data-string="welcome"></p></h1>
+		<h1><p class="well" data-string='{"text":"welcome","title":"welcome"}' ></p></h1>
 		<div class="row">
 			<div class="span8">
 				<ul class="nav nav-tabs">
@@ -44,11 +45,11 @@
 				  <fieldset>
 					<legend data-string="register"></legend>
 					<label data-string="firstname"></label>
-					<input type="text">
+					<input type="text" data-string='{"placeholder":"firstname_placeholder"}'>
 					<label data-string="lastname"></label>
-					<input type="text"/>
+					<input type="text" data-string='{"placeholder":"lastname_placeholder"}'/>
 					<div class="controls">
-						<button type="submit" class="btn" data-string="submit"></button>
+						<button type="submit" class="btn" data-string='{"text":"submit","title":"submit_title"}'></button>
 					</div>
 				  </fieldset>
 				</form>
@@ -64,14 +65,15 @@
 	<script type='text/javascript'>
 	$(document).ready(function(){
 	  
+        
 	 loQale.init({
 		locale:'fr',
 		triggerOnInit:true,
 		triggerOnLocaleChange:true,
 		onBeforeTranslate:function(elements){console.log("Starting translation");},
 		onAfterTranslate:function(elements){console.log("Finished translation");},
-		onBeforeElementTranslate:function(element,elementStringName,elementStringValue){console.log("Translating "+elementStringName);},
-		onAfterElementTranslate:function(element,elementStringName,elementStringValue){console.log("Finished translating "+elementStringName);}
+		onBeforeElementTranslate:function(element,attribute,elementStringName,elementStringValue){console.log("Translating attribute "+attribute+ " for "+elementStringName);},
+		onAfterElementTranslate:function(element,attribute,elementStringName,elementStringValue){console.log("Finished translating attribute "+attribute +" for "+elementStringName);}
 	});
 	 
 	 
